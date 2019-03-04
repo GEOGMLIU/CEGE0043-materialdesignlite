@@ -1,8 +1,8 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "Material Design_Lite",
-  "short_name": "Material Design_Lite",
+  "name": "Material_Lite",
+  "short_name": "Material_Lite",
   "version": "fullmaterialtemplate",
   "description": "Hello World sample application that responds to the deviceready event.",
   "author": "PhoneGap Team",
