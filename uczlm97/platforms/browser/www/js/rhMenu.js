@@ -6,5 +6,5 @@ function menuClicked()
 //div change to ucl logo where click on the menu
 function addUCLLogo()
 {
-	document.getElementById('ucllogo').innerHTML="<img src='images/ucl.png'>"
+	document.getElementById('ucllogo').innerHTML="<img src='images/dog.png'>"
 }
