@@ -59,6 +59,26 @@
     z-index: 900;
   }
 </style>
+
+
+<!-- the following links add the CSS and JS required for the Leaflet Map-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+integrity="sha512-
+wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+integrity="sha512-
+mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+crossorigin=""></script>
+
+<!-- the following CSS is used to set the size of the Map-->
+<style type="text/css">
+#mapid{height: 500px;}
+</style>
+<link rel="stylesheet" href="ionicons.min.css">
+<link rel="stylesheet" href="leaflet.awesome-markers.css">
+<script src="leaflet.awesome-markers.js"></script>
 </head>
 <body>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -79,73 +99,57 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-          <li class="mdl-menu__item"><a href="simMapGeoJSON.html">About</a></li>
+          <li class="mdl-menu__item"><a href="BasicMapWithButtons.html">About</a></li>
           <li class="mdl-menu__item" onclick="addUCLLogo()">Contact</li>
-          <li class="mdl-menu__item" onclick="addPointLinePoly()">Div Change</li>
-        </ul>
-      </div>
-
-      <!-- the following links add the CSS and JS required for the Leaflet Map-->
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
-      integrity="sha512-
-      wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
-      crossorigin=""/>
-
-      <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
-      integrity="sha512-
-      mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
-      crossorigin=""></script>
-
-      <!-- the following CSS is used to set the size of the Map-->
-      <style type="text/css">
-      #mapid{height: 500px;}
-    </style>
-  </header>
-
-
-
-  <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-    <header class="demo-drawer-header">
-      <img src="images/user.jpg" class="demo-avatar">
-      <div class="demo-avatar-dropdown">
-        <span>hello@example.com</span>
-        <div class="mdl-layout-spacer"></div>
-        <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-          <i class="material-icons" role="presentation">arrow_drop_down</i>
-          <span class="visuallyhidden">Accounts</span>
-        </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-          <li class="mdl-menu__item">hello@example.com</li>
-          <li class="mdl-menu__item">info@example.com</li>
-          <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+          <li class="mdl-menu__item" onclick="menuClicked()">Div Change</li>
         </ul>
       </div>
     </header>
-    <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-      <div class="mdl-layout-spacer"></div>
-      <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-    </nav>
+
+
+
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+      <header class="demo-drawer-header">
+        <img src="images/user.jpg" class="demo-avatar">
+        <div class="demo-avatar-dropdown">
+          <span>hello@example.com</span>
+          <div class="mdl-layout-spacer"></div>
+          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">arrow_drop_down</i>
+            <span class="visuallyhidden">Accounts</span>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+            <li class="mdl-menu__item">hello@example.com</li>
+            <li class="mdl-menu__item">info@example.com</li>
+            <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+          </ul>
+        </div>
+      </header>
+      <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+        <a class="mdl-navigation__link" href="" onclick="getEarthquakes(); return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>get Earthquakes</a>
+        <a class="mdl-navigation__link" href="" onclick="getEarthquakes();return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Get Earthquakes</a>
+        <a class="mdl-navigation__link" href="" onclick="addPointLinePoly(); return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>add PointLinePoly</a>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+        <div class="mdl-layout-spacer"></div>
+        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+      </nav>
+    </div>
+
+
+    <main class="mdl-layout__content mdl-color--grey-100">
+      <div id="mapid" style="width: 800px; height: 600px;"></div>
+    </main>
+
+
   </div>
-
-
-  <main class="mdl-layout__content mdl-color--grey-100">
-    <div id="mapid" style="width: 800px; height: 600px;"></div>
-  </main>
-
-
-</div>
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<script src="js/rhMenu.js"></script>
-<script src="js/leaflet.js"></script>
-<script src="js/leafletFunction.js"></script>
+  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="js/rhMenu.js"></script>
+  <script src="js/leaflet.js"></script>
+  <script src="js/leafletFunction.js"></script>
 </body>
 </html>
