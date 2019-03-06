@@ -1,4 +1,5 @@
 var client;
+var earthquakes;
 
 function addPointLinePoly()
 {
@@ -53,6 +54,7 @@ function loadEarthquakelayer(earthquakedata)
 {
 	// convert the text to JSON
 	var earthquakejson = JSON.parse(earthquakedata);
+	earthquakes=earthquakejson;
 	// add the JSON layer onto the map - it will appear using the default icons
 	earthquakelayer = L.geoJson(earthquakejson).addTo(mymap);
 	// change the map zoom so that all the data is shown
