@@ -15,26 +15,33 @@ function showPosition(position)
 		mymap.removeLayer(userMarker);
 	}
 	userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
+	getDistance();
+
 }
 
 
 
 function getDistance() 
 {
-	alert('getting distance');
+	//alert('getting distance');
 	// getDistanceFromPoint is the function called once the distance has been found
 	navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 
 function getDistanceFromPoint(position) 
 {
-// find the coordinates of a point using this website:
-// these are the coordinates for cruciform hub
-var lat = 51.524616;
-var lng =  -0.13818;
-// return the distance in kilometers
-var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
-if (distance<0.1) {alert("You're within 100 meter of UCL.");}
+	// find the coordinates of a point using this website:
+	// these are the coordinates for cruciform hub
+	var lat = 51.524616;
+	var lng =  -0.13818;
+	// return the distance in kilometers
+	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+	if (distance < 0.1) {
+		alert("You're within 100 meter of UCL.");
+	}
+	else{
+		alert("hey! /n You're out of controlled now! :)");
+	}
 }
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
