@@ -14,8 +14,10 @@ function showPosition(position)
 	{
 		mymap.removeLayer(userMarker);
 	}
-	userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
-	getDistance();
+	userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here at: </b>" + position.coords.latitude + ',' + position.coords.longitude);
+	
+
+	//getDistance();
 
 }
 
@@ -26,6 +28,11 @@ function getDistance()
 	//alert('getting distance');
 	// getDistanceFromPoint is the function called once the distance has been found
 	navigator.geolocation.getCurrentPosition(getDistanceFromMultiplePoints);
+}
+
+function getDistance2()
+{
+	navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 
 function getDistanceFromPoint(position) 
