@@ -64,7 +64,7 @@ function addPointLinePoly()
 		}
 		if (layername == "busstops") 
 		{
-			url = "https://developer.cege.ucl.ac.uk:31089/cege0043-week2/busstops.geojson"
+			url = "https://developer.cege.ucl.ac.uk:31089/CEGE0043-materialdesignlite/uczlm97/www/busstops.geojson"
 		}
 		client.open('GET',url);
 		client.onreadystatechange = dataResponse;
