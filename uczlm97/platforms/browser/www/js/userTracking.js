@@ -14,8 +14,10 @@ function showPosition(position)
 	{
 		mymap.removeLayer(userMarker);
 	}
-	userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
-	getDistance();
+	userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here at: </b>" + position.coords.latitude + ',' + position.coords.longitude);
+	
+
+	//getDistance();
 
 }
 
@@ -28,20 +30,32 @@ function getDistance()
 	navigator.geolocation.getCurrentPosition(getDistanceFromMultiplePoints);
 }
 
+function getDistance2()
+{
+	navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
+	alert("Calculating Distance...");
+}
+
 function getDistanceFromPoint(position) 
 {
+	alert("Calculating Distance2...");
 	// find the coordinates of a point using this website:
 	// these are the coordinates for cruciform hub
 	var lat = 51.524616;
 	var lng =  -0.13818;
 	// return the distance in kilometers
 	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
-	if (distance < 0.1) {
+	alert("Calculating Distance3...");
+	alert("Distance:" + distance);
+	document.getElementById('showDistance').innerHTML = "Distance: " + distance;
+	
+	//alert("You're " + distance + "km away from UCL fixed point")
+	/*if (distance < 0.1) {
 		alert("You're within 100 meter of UCL.");
 	}
 	else{
 		alert("hey! /n You're out of controlled now! :)");
-	}
+	}*/
 }
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html

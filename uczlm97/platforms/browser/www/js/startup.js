@@ -2,7 +2,8 @@ function trackAndCircle()
 {
 	trackLocation();
 	addPointLinePoly();
-	getEarthquakes();
+	//getEarthquakes();
+	popupClickLocation();
 }
 
 function startup()
